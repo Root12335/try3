@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>منصة المدرب | لوحة التحكم</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="instructor-dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="logo">
+            <img src="assets/logo.png" alt="منصة مكني" class="logo-img" />
+            <h2>منصة مكني</h2>
+          </div>
+        </div>
+
+        <div class="instructor-profile">
+          <div class="instructor-avatar">
+            <img
+              id="sidebarAvatar"
+              src="https://i.pravatar.cc/150?img=12"
+              alt="صورة المدرب"
+            />
+          </div>
+          <h3 id="instructorName">عبدالله حسين</h3>
+          <p id="instructorSpecialty">مدرب البرمجة</p>
+        </div>
+
+        <nav class="sidebar-nav">
+          <ul>
+            <li>
+              <a href="#profile" class="active" data-section="profile">
+                <i class="fas fa-user"></i>
+                <span>الملف الشخصي</span>
+              </a>
+            </li>
+            <li>
+              <a href="#courses" data-section="courses">
+                <i class="fas fa-book"></i>
+                <span>دوراتي</span>
+              </a>
+            </li>
+            <li>
+              <a href="#add-course" data-section="add-course">
+                <i class="fas fa-plus-circle"></i>
+                <span>إضافة دورة</span>
+              </a>
+            </li>
+            <li>
+              <a href="#mentors" data-section="mentors">
+                <i class="fas fa-users"></i>
+                <span>المرشدين</span>
+              </a>
+            </li>
+            <li class="logout-item">
+              <a href="index.html">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>تسجيل الخروج</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="content-header">
+          <div class="welcome-message">
+            <h2>مرحباً، <span id="headerInstructorName">أحمد</span></h2>
+            <p class="date">
+              <i class="far fa-calendar-alt"></i> <span id="currentDate"></span>
+            </p>
+          </div>
+          <div class="header-actions">
+            <button class="icon-btn">
+              <i class="far fa-bell"></i>
+              <span class="notification-badge">3</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Profile Section -->
+        <section id="profile" class="content-section active">
+          <div class="section-title">
+            <h1>الملف الشخصي</h1>
+            <p>تحديث معلوماتك الشخصية والمهنية</p>
+          </div>
+
+          <div class="profile-container">
+            <div class="profile-card">
+              <div class="profile-photo-container">
+                <div class="profile-photo">
+                  <img
+                    id="profilePhotoPreview"
+                    src="https://i.pravatar.cc/300?img=11"
+                    alt="صورة المدرب"
+                  />
+                  <div class="photo-overlay">
+                    <i class="fas fa-camera"></i>
+                    <span>تغيير الصورة</span>
+                  </div>
+                </div>
+                <input
+                  type="file"
+                  id="profilePhotoInput"
+                  accept="image/*"
+                  hidden
+                />
+              </div>
+
+              <div class="profile-stats">
+                <div class="stat-item">
+                  <div class="stat-value">5</div>
+                  <div class="stat-label">الدورات</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value">120</div>
+                  <div class="stat-label">الطلاب</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value">4.8</div>
+                  <div class="stat-label">التقييم</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="profile-form-container">
+              <form id="profileForm">
+                <div class="form-section">
+                  <h3 class="form-section-title">المعلومات الشخصية</h3>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="fullName"
+                        >الاسم الكامل <span class="required">*</span></label
+                      >
+                      <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        value="أحمد محمد"
+                        required
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="email"
+                        >البريد الإلكتروني
+                        <span class="required">*</span></label
+                      >
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value="ahmed@example.com"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="phone"
+                        >رقم الهاتف <span class="required">*</span></label
+                      >
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value="0123456789"
+                        required
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="specialty"
+                        >التخصص <span class="required">*</span></label
+                      >
+                      <select id="specialty" name="specialty" required>
+                        <option value="programming" selected>البرمجة</option>
+                        <option value="design">التصميم</option>
+                        <option value="marketing">التسويق</option>
+                        <option value="business">إدارة الأعمال</option>
+                        <option value="languages">اللغات</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="bio"
+                      >نبذة تعريفية <span class="required">*</span></label
+                    >
+                    <textarea id="bio" name="bio" rows="4" required>
+مدرب متخصص في تطوير الويب والبرمجة بخبرة أكثر من 8 سنوات. حاصل على شهادة في علوم الحاسب وعدة شهادات معتمدة في مجال البرمجة وتطوير التطبيقات.</textarea
+                    >
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h3 class="form-section-title">المهارات</h3>
+                  <div class="skills-container">
+                    <div class="skills-input-group">
+                      <input
+                        type="text"
+                        id="skillInput"
+                        placeholder="أضف مهارة جديدة..."
+                      />
+                      <button type="button" id="addSkillBtn" class="btn-icon">
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                    <div id="skillsContainer" class="skills-list">
+                      <div class="skill-tag">
+                        JavaScript
+                        <span class="remove-skill"
+                          ><i class="fas fa-times"></i
+                        ></span>
+                      </div>
+                      <div class="skill-tag">
+                        HTML/CSS
+                        <span class="remove-skill"
+                          ><i class="fas fa-times"></i
+                        ></span>
+                      </div>
+                      <div class="skill-tag">
+                        React
+                        <span class="remove-skill"
+                          ><i class="fas fa-times"></i
+                        ></span>
+                      </div>
+                      <div class="skill-tag">
+                        Node.js
+                        <span class="remove-skill"
+                          ><i class="fas fa-times"></i
+                        ></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> حفظ التغييرات
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="courses" class="content-section">
+          <div class="section-title">
+            <h1>دوراتي</h1>
+            <p>إدارة الدورات التدريبية الخاصة بك</p>
+          </div>
+
+          <div class="section-actions">
+            <div class="search-container">
+              <input
+                type="text"
+                placeholder="البحث عن دورة..."
+                class="search-input"
+              />
+              <i class="fas fa-search search-icon"></i>
+            </div>
+            <a
+              href="#add-course"
+              class="btn btn-primary"
+              data-section="add-course"
+            >
+              <i class="fas fa-plus"></i> إضافة دورة جديدة
+            </a>
+          </div>
+
+          <div class="courses-grid">
+            <!-- Course Card 1 -->
+            <div class="course-card">
+              <div class="course-status active">نشطة</div>
+              <div class="course-image">
+                <img
+                  src="assets/course2.jpg"
+                  alt="أساسيات البرمجة بلغة JavaScript"
+                />
+              </div>
+              <div class="course-content">
+                <h3 class="course-title">أساسيات البرمجة بلغة JavaScript</h3>
+                <div class="course-meta">
+                  <div class="meta-item">
+                    <i class="fas fa-users"></i>
+                    <span>45 طالب</span>
+                  </div>
+                  <div class="meta-item">
+                    <i class="fas fa-star"></i>
+                    <span>4.9</span>
+                  </div>
+                </div>
+                <div class="course-details">
+                  <div class="detail-item">
+                    <i class="fas fa-layer-group"></i>
+                    <span>5 أقسام</span>
+                  </div>
+                  <div class="detail-item">
+                    <i class="fas fa-clock"></i>
+                    <span>20 ساعة</span>
+                  </div>
+                </div>
+                <div class="course-mentors">
+                  <span class="mentor-label">المرشدين:</span>
+                  <div class="mentor-avatars">
+                    <img
+                      src="https://i.pravatar.cc/30?img=1"
+                      alt="مرشد"
+                      title="سارة أحمد"
+                    />
+                    <img
+                      src="https://i.pravatar.cc/30?img=2"
+                      alt="مرشد"
+                      title="محمد علي"
+                    />
+                  </div>
+                </div>
+                <div class="course-actions">
+                  <button class="btn btn-icon btn-secondary">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                  <button class="btn btn-icon btn-secondary">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="btn btn-icon btn-danger">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Course Card 2 -->
+            <div class="course-card">
+              <div class="course-status draft">مسودة</div>
+              <div class="course-image">
+                <img
+                  src="assets/course2.jpg"
+                  alt="تطوير تطبيقات الويب باستخدام React"
+                />
+              </div>
+              <div class="course-content">
+                <h3 class="course-title">تطوير تطبيقات الويب باستخدام React</h3>
+                <div class="course-meta">
+                  <div class="meta-item">
+                    <i class="fas fa-users"></i>
+                    <span>0 طالب</span>
+                  </div>
+                  <div class="meta-item">
+                    <i class="fas fa-star"></i>
+                    <span>0.0</span>
+                  </div>
+                </div>
+                <div class="course-details">
+                  <div class="detail-item">
+                    <i class="fas fa-layer-group"></i>
+                    <span>3 أقسام</span>
+                  </div>
+                  <div class="detail-item">
+                    <i class="fas fa-clock"></i>
+                    <span>15 ساعة</span>
+                  </div>
+                </div>
+                <div class="course-mentors">
+                  <span class="mentor-label">المرشدين:</span>
+                  <div class="mentor-avatars">
+                    <div class="add-mentor-icon">
+                      <i class="fas fa-plus"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="course-actions">
+                  <button class="btn btn-icon btn-secondary">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                  <button class="btn btn-icon btn-secondary">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="btn btn-icon btn-danger">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Add Course Section -->
+        <section id="add-course" class="content-section">
+          <div class="section-title">
+            <h1>إضافة دورة جديدة</h1>
+            <p>قم بإنشاء دورة تدريبية جديدة وتنظيم محتواها</p>
+          </div>
+
+          <div class="add-course-container">
+            <form id="addCourseForm">
+              <div class="form-section">
+                <h3 class="form-section-title">معلومات الدورة</h3>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="courseTitle"
+                      >عنوان الدورة <span class="required">*</span></label
+                    >
+                    <input
+                      type="text"
+                      id="courseTitle"
+                      name="courseTitle"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="courseCategory"
+                      >التصنيف <span class="required">*</span></label
+                    >
+                    <select id="courseCategory" name="courseCategory" required>
+                      <option value="">اختر التصنيف</option>
+                      <option value="programming">البرمجة</option>
+                      <option value="design">التصميم</option>
+                      <option value="marketing">التسويق</option>
+                      <option value="business">إدارة الأعمال</option>
+                      <option value="languages">اللغات</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="courseDescription"
+                    >وصف الدورة <span class="required">*</span></label
+                  >
+                  <textarea
+                    id="courseDescription"
+                    name="courseDescription"
+                    rows="4"
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="courseThumbnail"
+                    >صورة الدورة <span class="required">*</span></label
+                  >
+                  <div class="thumbnail-preview" id="thumbnailPreview">
+                    <i class="fas fa-image"></i>
+                    <span>اختر صورة</span>
+                  </div>
+                  <input
+                    type="file"
+                    id="courseThumbnail"
+                    name="courseThumbnail"
+                    accept="image/*"
+                    hidden
+                  />
+                </div>
+              </div>
+
+              <div class="form-section">
+                <h3 class="form-section-title">أقسام الدورة</h3>
+                <p class="form-section-desc">
+                  قم بإضافة أقسام ودروس للدورة التدريبية
+                </p>
+
+                <div class="course-sections-container">
+                  <!-- Section 1 -->
+                  <div class="course-section-item">
+                    <div class="section-header">
+                      <h3>القسم 1</h3>
+                      <button type="button" class="btn-icon remove-section-btn">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+
+                    <div class="form-group">
+                      <label>عنوان القسم <span class="required">*</span></label>
+                      <input type="text" name="sections[0][title]" required />
+                    </div>
+
+                    <div class="form-group">
+                      <label>وصف القسم</label>
+                      <textarea
+                        name="sections[0][description]"
+                        rows="2"
+                      ></textarea>
+                    </div>
+
+                    <div class="lessons-container">
+                      <h4>الدروس</h4>
+
+                      <div class="lesson-item">
+                        <div class="lesson-header">
+                          <h5>الدرس 1</h5>
+                          <button
+                            type="button"
+                            class="btn-icon remove-lesson-btn"
+                          >
+                            <i class="fas fa-times"></i>
+                          </button>
+                        </div>
+
+                        <div class="form-group">
+                          <label
+                            >عنوان الدرس <span class="required">*</span></label
+                          >
+                          <input
+                            type="text"
+                            name="sections[0][lessons][0][title]"
+                            required
+                          />
+                        </div>
+
+                        <div class="form-group">
+                          <label
+                            >نوع المحتوى <span class="required">*</span></label
+                          >
+                          <select
+                            name="sections[0][lessons][0][type]"
+                            class="lesson-type"
+                            required
+                          >
+                            <option value="video">فيديو</option>
+                            <option value="text">نص</option>
+                            <option value="assignment">واجب</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group lesson-content-video">
+                          <label
+                            >رابط الفيديو <span class="required">*</span></label
+                          >
+                          <input
+                            type="url"
+                            name="sections[0][lessons][0][videoUrl]"
+                          />
+                        </div>
+                      </div>
+
+                      <button
+                        type="button"
+                        class="btn btn-secondary btn-sm add-lesson-btn"
+                      >
+                        <i class="fas fa-plus"></i> إضافة درس
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <button type="button" class="btn btn-secondary add-section-btn">
+                  <i class="fas fa-plus"></i> إضافة قسم جديد
+                </button>
+              </div>
+
+              <div class="form-section">
+                <h3 class="form-section-title">المرشدين</h3>
+                <p class="form-section-desc">
+                  قم بإضافة مرشدين للدورة التدريبية
+                </p>
+
+                <div class="mentors-selection">
+                  <div class="selected-mentors" id="selectedMentors">
+                    <!-- Selected mentors will appear here -->
+                  </div>
+
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    id="openMentorModal"
+                  >
+                    <i class="fas fa-plus"></i> إضافة مرشد
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button
+                  type="button"
+                  id="saveDraftBtn"
+                  class="btn btn-secondary"
+                >
+                  <i class="fas fa-save"></i> حفظ كمسودة
+                </button>
+                <button type="submit" class="btn btn-primary">
+                  <i class="fas fa-check"></i> إنشاء الدورة
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- Mentors Section -->
+        <section id="mentors" class="content-section">
+          <div class="section-title">
+            <h1>المرشدين</h1>
+            <p>إدارة المرشدين المساعدين في دوراتك</p>
+          </div>
+
+          <div class="section-actions">
+            <div class="search-container">
+              <input
+                type="text"
+                placeholder="البحث عن مرشد..."
+                class="search-input"
+              />
+              <i class="fas fa-search search-icon"></i>
+            </div>
+            <button class="btn btn-primary" id="addNewMentorBtn">
+              <i class="fas fa-plus"></i> إضافة مرشد جديد
+            </button>
+          </div>
+
+          <div class="mentors-grid">
+            <!-- Mentor Card 1 -->
+            <div class="mentor-card">
+              <div class="mentor-avatar">
+                <img src="https://i.pravatar.cc/150?img=1" alt="سارة أحمد" />
+              </div>
+              <div class="mentor-info">
+                <h3 class="mentor-name">سارة أحمد</h3>
+                <p class="mentor-specialty">مطورة واجهات المستخدم</p>
+                <p class="mentor-email">sarah@example.com</p>
+              </div>
+              <div class="mentor-courses">
+                <span class="courses-count">2 دورات</span>
+              </div>
+              <div class="mentor-actions">
+                <button class="btn btn-icon btn-secondary">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-icon btn-danger">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Mentor Card 2 -->
+            <div class="mentor-card">
+              <div class="mentor-avatar">
+                <img src="https://i.pravatar.cc/150?img=2" alt="محمد علي" />
+              </div>
+              <div class="mentor-info">
+                <h3 class="mentor-name">محمد علي</h3>
+                <p class="mentor-specialty">مطور تطبيقات الويب</p>
+                <p class="mentor-email">mohamed@example.com</p>
+              </div>
+              <div class="mentor-courses">
+                <span class="courses-count">1 دورة</span>
+              </div>
+              <div class="mentor-actions">
+                <button class="btn btn-icon btn-secondary">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-icon btn-danger">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Add Mentor Modal -->
+    <div class="modal" id="mentorModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>إضافة مرشد جديد</h3>
+          <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="addMentorForm">
+            <div class="form-group">
+              <label for="mentorName"
+                >اسم المرشد <span class="required">*</span></label
+              >
+              <input type="text" id="mentorName" name="mentorName" required />
+            </div>
+            <div class="form-group">
+              <label for="mentorEmail"
+                >البريد الإلكتروني <span class="required">*</span></label
+              >
+              <input
+                type="email"
+                id="mentorEmail"
+                name="mentorEmail"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="mentorSpecialty"
+                >التخصص <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                id="mentorSpecialty"
+                name="mentorSpecialty"
+                required
+              />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary close-modal">إلغاء</button>
+          <button class="btn btn-primary" id="saveMentorBtn">حفظ</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="instructor-dashboard.js"></script>
+  </body>
+</html>
